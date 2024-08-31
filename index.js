@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import  sendOtp from './otp-service.js';
+import   { sendOtp } from './otp-service.js';
 import { verifyOtp } from './otp-service.js';
 
 const app = express();
