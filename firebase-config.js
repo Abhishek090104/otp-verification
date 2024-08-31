@@ -1,31 +1,17 @@
 import admin from 'firebase-admin';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
-
-const serviceAccountKeyBase64 = process.env.FIREBASE_SERVICE_ACCOUNT_KEY_JSON;
-const projectIdBase64 = process.env.FIREBASE_PROJECT_ID;
-
-if (!serviceAccountKeyBase64 || !projectIdBase64) {
-  throw new Error('Required environment variables are not set');
-}
-
-let serviceAccount;
-let projectId;
-try {
-  
-  const serviceAccountKey = Buffer.from(serviceAccountKeyBase64, 'base64').toString('utf8');
-  serviceAccount = JSON.parse(serviceAccountKey);
-
-  
-  projectId = Buffer.from(projectIdBase64, 'base64').toString('utf8');
-} catch (error) {
-  throw new Error('Error parsing environment variables');
-}
+// Read and parse the service account key JSON from environment variables
+const serviceAccount = JSON.parse(Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_KEY_JSON, 'base64').toString('utf8'));
 
 const firebaseConfig = {
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: `https://${projectId}.firebaseio.com`,
+  databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`,
 };
 
+// Initialize Firebase Admin SDK
 admin.initializeApp(firebaseConfig);
 
 export default admin;
+
