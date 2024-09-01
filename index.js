@@ -2,8 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import  sendOtp from './otp-service.js';
 import  verifyOtp  from './otp-service.js';
-import dotenv from 'dotenv';
-
+import dotenv from 'dotenv'
 
 dotenv.config();
 
