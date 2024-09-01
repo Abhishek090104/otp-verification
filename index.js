@@ -1,11 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import  sendOtp from './otp-service.js';
-import  verifyOtp  from './otp-service.js';
-import dotenv from 'dotenv'
-
-dotenv.config();
-
+import   { sendOtp } from './otp-service.js';
+import { verifyOtp } from './otp-service.js';
 
 const app = express();
 app.use(bodyParser.json());
