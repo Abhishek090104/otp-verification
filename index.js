@@ -1,13 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import   { sendOtp } from './otp-service.js';
-import { verifyOtp } from './otp-service.js';
 import cors from 'cors';
+import { sendOtp, verifyOtp } from './otp-service.js';
 
 const app = express();
-app.use(cors());
 
+// Detailed CORS options
+const corsOptions = {
+  origin: 'http://127.0.0.1:5500',  // Your frontend URL
+  methods: 'GET,POST',
+  allowedHeaders: 'Content-Type',
+};
 
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 app.post('/send-otp', async (req, res) => {
