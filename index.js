@@ -2,8 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import   { sendOtp } from './otp-service.js';
 import { verifyOtp } from './otp-service.js';
+import cors from cors;
 
 const app = express();
+app.use(cors());
+
+
 app.use(bodyParser.json());
 
 app.post('/send-otp', async (req, res) => {
