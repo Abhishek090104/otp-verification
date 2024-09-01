@@ -10,7 +10,7 @@
         "dotenv": "^16.4.5",
         "express": "^4.19.2",
         "firebase-admin": "^12.4.0",
-        "firebaseui": "^6.1.0",
-        "heroku": "^8.7.1"
+        "firebaseui": "^6.1.0"
+        
     }
 }
